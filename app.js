@@ -130,7 +130,7 @@ app.get("/players/:playerId/playerScores", async (request, response) => {
     SELECT playerId, playerName, SUM(score), SUM(fours), 
     SUM(sixes)
     FROM player_details NATURAL JOIN player_match_scores
-    WHERE player_id = $(playerId);`;
+    WHERE player_id = ${playerId};`;
   const stats = await db.get(getStatsQuery);
   console.log(stats);
   response.send({
